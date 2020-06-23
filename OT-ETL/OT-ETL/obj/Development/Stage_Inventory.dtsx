@@ -1,0 +1,1379 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/1/2020 2:43:26 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PHAT-PHAM-PC"
+  DTS:CreatorName="PHAT-PHAM-PC\Phat Pham"
+  DTS:DTSID="{FF6D8462-FD0D-4215-818E-16B444AFFA48}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{98576A69-51E2-4986-A6DB-A5CE5AF7DBC3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF - Stage Inventory"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8EE91EFE-1A59-4898-A6E2-8B1D6C2C276D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Stage Inventory"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Stage Inventory\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Inventory\OLE DB Destination.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage Inventory\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Inventory\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Stage Inventory\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Inventory\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Inventory\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Inventory\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Inventory\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage Inventory\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Inventory\OLE DB Source.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Inventory\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </output>
+                <output
+                  refId="Package\DF - Stage Inventory\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Inventory\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Inventory\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Inventory\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Inventory\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DF - Stage Products"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0F1F5001-FB4E-4B80-9193-C652352B425D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Stage Products"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Stage Products\DST - Stage stgOTProducts"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - Stage stgOTProducts"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgOTProducts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Connections[OleDbConnection]"
+                  connectionManagerID="{031F80B0-2D1E-42FA-9C49-F15F1365ABFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.OTStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].Columns[product_id]"
+                      cachedDataType="i4"
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[product_id]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].Columns[product_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="product_name"
+                      externalMetadataColumnId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[product_name]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].Columns[warehouse_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="warehouse_name"
+                      externalMetadataColumnId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].ExternalColumns[warehouse_name]"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[warehouse_name]" />
+                    <inputColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].Columns[category_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="category_name"
+                      externalMetadataColumnId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[category_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].ExternalColumns[warehouse_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="warehouse_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="category_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Products\DST - Stage stgOTProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\DST - Stage stgOTProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Products\DST - Stage stgOTProducts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage Products\SRC - OT Products"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - OT Products"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT products.product_id, products.product_name, warehouses.warehouse_name, product_categories.category_name
+FROM     inventories INNER JOIN
+                  products ON inventories.product_id = products.product_id INNER JOIN
+                  product_categories ON products.category_id = product_categories.category_id INNER JOIN
+                  warehouses ON inventories.warehouse_id = warehouses.warehouse_id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage Products\SRC - OT Products.Connections[OleDbConnection]"
+                  connectionManagerID="{836CAAEE-4EF6-43B7-9F6C-0D96E57BACB8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.OT]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[product_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      length="255"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[product_name]"
+                      name="product_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[warehouse_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].ExternalColumns[warehouse_name]"
+                      length="255"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[warehouse_name]"
+                      name="warehouse_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[category_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].ExternalColumns[category_name]"
+                      length="255"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].Columns[category_name]"
+                      name="category_name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].ExternalColumns[warehouse_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="warehouse_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output].ExternalColumns[category_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="category_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      name="product_name" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[warehouse_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[warehouse_name]"
+                      name="warehouse_name" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[category_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[category_name]"
+                      name="category_name" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Stage Products.Paths[OLE DB Source Output]"
+              endId="Package\DF - Stage Products\DST - Stage stgOTProducts.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Stage Products\SRC - OT Products.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DF - Stage WareHouse"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3608BFBC-0D95-4B84-A974-79EDF5C1DCD0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Stage WareHouse"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - Stage stgWareHouses"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Stage stgWareHouses]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Connections[OleDbConnection]"
+                  connectionManagerID="{031F80B0-2D1E-42FA-9C49-F15F1365ABFD}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.OTStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].Columns[warehouse_id]"
+                      cachedDataType="i4"
+                      cachedName="warehouse_id"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[warehouse_id]"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[warehouse_id]" />
+                    <inputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].Columns[warehouse_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="warehouse_name"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[warehouse_name]"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[warehouse_name]" />
+                    <inputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].Columns[address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="address"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[address]" />
+                    <inputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].Columns[state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].Columns[country_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="country_name"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[country_name]"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[country_name]" />
+                    <inputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].Columns[region_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region_name"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[region_name]"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[region_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[warehouse_id]"
+                      dataType="i4"
+                      name="warehouse_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[warehouse_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="warehouse_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[country_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="country_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input].ExternalColumns[region_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="region_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Stage WareHouse\SRC - OT WareHouses"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - OT WareHouses"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT warehouses.warehouse_id, warehouses.warehouse_name, locations.address, locations.city, locations.state, countries.country_name, regions.region_name
+FROM     countries INNER JOIN
+                  locations ON countries.country_id = locations.country_id INNER JOIN
+                  regions ON countries.region_id = regions.region_id INNER JOIN
+                  warehouses ON locations.location_id = warehouses.location_id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Connections[OleDbConnection]"
+                  connectionManagerID="{836CAAEE-4EF6-43B7-9F6C-0D96E57BACB8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.OT]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[warehouse_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[warehouse_id]"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[warehouse_id]"
+                      name="warehouse_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[warehouse_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[warehouse_name]"
+                      length="255"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[warehouse_name]"
+                      name="warehouse_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      length="255"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[address]"
+                      name="address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="50"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      length="50"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[state]"
+                      name="state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[country_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[country_name]"
+                      length="40"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[country_name]"
+                      name="country_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[region_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[region_name]"
+                      length="50"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].Columns[region_name]"
+                      name="region_name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[warehouse_id]"
+                      dataType="i4"
+                      name="warehouse_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[warehouse_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="warehouse_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[country_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      name="country_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output].ExternalColumns[region_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="region_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[warehouse_id]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[warehouse_id]"
+                      name="warehouse_id" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[warehouse_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[warehouse_name]"
+                      name="warehouse_name" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[address]"
+                      name="address" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[state]"
+                      name="state" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[country_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="40"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[country_name]"
+                      name="country_name" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[region_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[region_name]"
+                      name="region_name" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Stage WareHouse.Paths[OLE DB Source Output]"
+              endId="Package\DF - Stage WareHouse\DST - Stage stgWareHouses.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Stage WareHouse\SRC - OT WareHouses.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate Stage Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7000C600-BD34-4A59-9B1A-8F2211A036C2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate Stage Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{772C7704-80AC-4B90-938D-0E32FFD62E7A}"
+      DTS:From="Package\SQL - Truncate Stage Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF - Stage Products" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{506E2E02-19A7-4BEE-9DF4-E4B81321D30B}"
+      DTS:From="Package\SQL - Truncate Stage Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DF - Stage WareHouse" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2B2EA7C8-B556-4A05-8909-622FA6BA86FC}"
+      DTS:From="Package\SQL - Truncate Stage Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DF - Stage Inventory" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\DF - Stage Products"
+          TopLeft="85.7142871739914,143.152943184137" />
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\SQL - Truncate Stage Tables"
+          TopLeft="244.571432736455,40.9882358689621" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\DF - Stage WareHouse"
+          TopLeft="294.85714787853,144.988237327523" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\DF - Stage Inventory"
+          TopLeft="500.00000851495,127.247060608121" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="299.971432736455,82.5882358689621">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-128.257145562464,60.5647073151745"
+              Start="0,0"
+              End="-128.257145562464,53.0647073151745">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6860960866872" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.6860960866872"
+                    Point2="0,20.6860960866872"
+                    Point3="-4,20.6860960866872" />
+                  <mssgle:LineSegment
+                    End="-124.257145562464,20.6860960866872" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-124.257145562464,20.6860960866872"
+                    Point2="-128.257145562464,20.6860960866872"
+                    Point3="-128.257145562464,24.6860960866872" />
+                  <mssgle:LineSegment
+                    End="-128.257145562464,53.0647073151745" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="386.647623640826,82.5882358689621">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.4000014585609"
+              Start="0,0"
+              End="0,54.9000014585609">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.9000014585609" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="402.771432736455,82.5882358689621">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="185.628575778494,44.6588247391593"
+              Start="0,0"
+              End="185.628575778494,37.1588247391593">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.2533840354465" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.2533840354465"
+                    Point2="0,15.2533840354465"
+                    Point3="4,15.2533840354465" />
+                  <mssgle:LineSegment
+                    End="181.628575778494,15.2533840354465" />
+                  <mssgle:CubicBezierSegment
+                    Point1="181.628575778494,15.2533840354465"
+                    Point2="185.628575778494,15.2533840354465"
+                    Point3="185.628575778494,19.2533840354465" />
+                  <mssgle:LineSegment
+                    End="185.628575778494,37.1588247391593" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF - Stage Products">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\DF - Stage Products\SRC - OT Products"
+          TopLeft="273.142861794452,48.9411771569698" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\DF - Stage Products\DST - Stage stgOTProducts"
+          TopLeft="226.285718139337,180.470590766326" />
+        <EdgeLayout
+          Id="Package\DF - Stage Products.Paths[OLE DB Source Output]"
+          TopLeft="355.942861794452,90.5411771569698">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26.0571436551151,89.9294136093562"
+              Start="0,0"
+              End="-26.0571436551151,82.4294136093562">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.9647068046781" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.9647068046781"
+                    Point2="0,44.9647068046781"
+                    Point3="-4,44.9647068046781" />
+                  <mssgle:LineSegment
+                    End="-22.0571436551151,44.9647068046781" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.0571436551151,44.9647068046781"
+                    Point2="-26.0571436551151,44.9647068046781"
+                    Point3="-26.0571436551151,48.9647068046781" />
+                  <mssgle:LineSegment
+                    End="-26.0571436551151,82.4294136093562" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DF - Stage WareHouse">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\DF - Stage WareHouse\SRC - OT WareHouses"
+          TopLeft="335.2,64.8" />
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\DF - Stage WareHouse\DST - Stage stgWareHouses"
+          TopLeft="363.2,205.6" />
+        <EdgeLayout
+          Id="Package\DF - Stage WareHouse.Paths[OLE DB Source Output]"
+          TopLeft="427.2,106.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.6,99.1999999999999"
+              Start="0,0"
+              End="41.6,91.6999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.6"
+                    Point2="0,49.6"
+                    Point3="4,49.6" />
+                  <mssgle:LineSegment
+                    End="37.6,49.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.6,49.6"
+                    Point2="41.6,49.6"
+                    Point3="41.6,53.6" />
+                  <mssgle:LineSegment
+                    End="41.6,91.6999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DF - Stage Inventory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DF - Stage Inventory\OLE DB Destination"
+          TopLeft="375.2,175.2" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DF - Stage Inventory\OLE DB Source"
+          TopLeft="439.2,60.8" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Products\SRC - OT Products">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage Products\DST - Stage stgOTProducts">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage WareHouse\SRC - OT WareHouses">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Stage WareHouse\DST - Stage stgWareHouses">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
