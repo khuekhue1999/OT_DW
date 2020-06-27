@@ -7,12 +7,12 @@
   DTS:CreatorName="PHAT-PHAM-PC\Phat Pham"
   DTS:DTSID="{DA888CDD-30A3-4C49-93C3-37AF6B9FFBF6}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.94"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{0711EF21-276A-41B7-8BDE-879E90EE2772}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{9D04CD8E-DE3E-470B-B846-978F5BE7AF8A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,6 +31,83 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[quantity]"
+                      cachedDataType="numeric"
+                      cachedName="quantity"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[quantity]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[(int)quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[(int)quantity]"
+                      name="(int)quantity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[quantity]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Data Flow Task\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
@@ -150,13 +227,11 @@
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[standard_cost]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[standard_cost]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[productquantity]"
-                      cachedDataType="numeric"
-                      cachedName="productquantity"
-                      cachedPrecision="38"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[productquantity]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]" />
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[(int)quantity]"
+                      cachedDataType="i4"
+                      cachedName="(int)quantity"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[(int)quantity]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[(int)quantity]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -193,9 +268,9 @@
                       precision="9"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[productquantity]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[(int)quantity]"
                       dataType="i4"
-                      name="productquantity" />
+                      name="(int)quantity" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -249,12 +324,11 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT orders.order_id, orders.customer_id, orders.salesman_id, orders.order_date, order_items.product_id, sum(order_items.quantity) as productquantity, order_items.unit_price, products.standard_cost
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT orders.order_id, orders.customer_id, orders.salesman_id, orders.order_date, order_items.product_id, order_items.quantity, order_items.unit_price, products.standard_cost
 FROM     order_items INNER JOIN
                   orders ON order_items.order_id = orders.order_id INNER JOIN
                   products ON order_items.product_id = products.product_id
-WHERE status='Shipped'
-group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_date, order_items.product_id, order_items.unit_price, products.standard_cost</property>
+WHERE status='Shipped'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -336,6 +410,17 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
                       name="product_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[quantity]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[quantity]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[quantity]"
+                      name="quantity"
+                      precision="8"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[unit_price]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
@@ -355,17 +440,6 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[standard_cost]"
                       name="standard_cost"
                       precision="9"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[productquantity]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]"
-                      name="productquantity"
-                      precision="38"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
@@ -392,6 +466,12 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
                       dataType="i4"
                       name="product_id" />
                     <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[quantity]"
+                      dataType="numeric"
+                      name="quantity"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unit_price]"
                       dataType="numeric"
                       name="unit_price"
@@ -402,12 +482,6 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
                       dataType="numeric"
                       name="standard_cost"
                       precision="9"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[productquantity]"
-                      dataType="numeric"
-                      name="productquantity"
-                      precision="38"
                       scale="2" />
                   </externalMetadataColumns>
                 </output>
@@ -442,11 +516,11 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
                       name="product_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[productquantity]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[quantity]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[productquantity]"
-                      name="productquantity"
-                      precision="38"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[quantity]"
+                      name="quantity"
+                      precision="8"
                       scale="2" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unit_price]"
@@ -482,8 +556,13 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
               endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -626,7 +705,7 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[DST - stgCustomer]</property>
+                  name="OpenRowset">[stgCustomer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -693,14 +772,14 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="(nvarchar)name"
-                      externalMetadataColumnId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].ExternalColumns[(nvarchar)name]"
+                      externalMetadataColumnId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].ExternalColumns[name]"
                       lineageId="Package\DF - Staging Customer\Data Conversion.Outputs[Data Conversion Output].Columns[(nvarchar)name]" />
                     <inputColumn
                       refId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].Columns[(nvarchar)address]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="(nvarchar)address"
-                      externalMetadataColumnId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].ExternalColumns[(nvarchar)address]"
+                      externalMetadataColumnId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].ExternalColumns[address]"
                       lineageId="Package\DF - Staging Customer\Data Conversion.Outputs[Data Conversion Output].Columns[(nvarchar)address]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -710,15 +789,15 @@ group by orders.order_id, orders.customer_id, orders.salesman_id, orders.order_d
                       dataType="i4"
                       name="customer_id" />
                     <externalMetadataColumn
-                      refId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].ExternalColumns[(nvarchar)name]"
-                      dataType="wstr"
-                      length="50"
-                      name="(nvarchar)name" />
-                    <externalMetadataColumn
-                      refId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].ExternalColumns[(nvarchar)address]"
+                      refId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].ExternalColumns[name]"
                       dataType="wstr"
                       length="255"
-                      name="(nvarchar)address" />
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Staging Customer\DST - stgCustomer.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      dataType="wstr"
+                      length="255"
+                      name="address" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1812,14 +1891,14 @@ FROM     customers</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="(nvarchar)product_name"
-                      externalMetadataColumnId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[(nvarchar)product_name]"
+                      externalMetadataColumnId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
                       lineageId="Package\DF - Staging Product\Data Conversion.Outputs[Data Conversion Output].Columns[(nvarchar)product_name]" />
                     <inputColumn
                       refId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[(nvarchar)category_name]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="(nvarchar)category_name"
-                      externalMetadataColumnId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[(nvarchar)category_name]"
+                      externalMetadataColumnId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
                       lineageId="Package\DF - Staging Product\Data Conversion.Outputs[Data Conversion Output].Columns[(nvarchar)category_name]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -1841,15 +1920,15 @@ FROM     customers</property>
                       precision="9"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[(nvarchar)product_name]"
+                      refId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
                       dataType="wstr"
                       length="255"
-                      name="(nvarchar)product_name" />
+                      name="product_name" />
                     <externalMetadataColumn
-                      refId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[(nvarchar)category_name]"
+                      refId="Package\DF - Staging Product\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
                       dataType="wstr"
                       length="255"
-                      name="(nvarchar)category_name" />
+                      name="category_name" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2163,51 +2242,51 @@ FROM     product_categories INNER JOIN
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\Data Flow Task"
           TopLeft="186.971431578422,201.270591058038" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\DF - Staging Customer"
           TopLeft="8.57142871739913,111.341178032106" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\DF - Staging Employee"
           TopLeft="517.714294258429,65.5058831594394" />
         <NodeLayout
-          Size="176,42"
+          Size="176,41.6"
           Id="Package\DF - Staging Product"
           TopLeft="350.857148832205,153.600002041985" />
         <NodeLayout
-          Size="180,42"
+          Size="180,41.6"
           Id="Package\Truncate stage tables"
-          TopLeft="233.714289694416,33.3176475821895" />
+          TopLeft="233.714289694416,37.3176475821895" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="280.714289694416,75.3176475821895">
+          TopLeft="295.04762302775,78.9176475821895">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-179.142860977017,36.0235304499165"
+              EndConnector="-193.676194310351,32.4235304499168"
               Start="0,0"
-              End="-179.142860977017,28.5235304499165">
+              End="-193.676194310351,24.9235304499168">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.35843745362099" />
+                    End="0,9.14081410304996" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.35843745362099"
-                    Point2="0,12.358437453621"
-                    Point3="-4,12.358437453621" />
+                    Point1="0,9.14081410304996"
+                    Point2="0,13.14081410305"
+                    Point3="-4,13.14081410305" />
                   <mssgle:LineSegment
-                    End="-175.142860977017,12.358437453621" />
+                    End="-189.676194310351,13.14081410305" />
                   <mssgle:CubicBezierSegment
-                    Point1="-175.142860977017,12.358437453621"
-                    Point2="-179.142860977017,12.358437453621"
-                    Point3="-179.142860977017,16.358437453621" />
+                    Point1="-189.676194310351,13.14081410305"
+                    Point2="-193.676194310351,13.14081410305"
+                    Point3="-193.676194310351,17.14081410305" />
                   <mssgle:LineSegment
-                    End="-179.142860977017,28.5235304499165" />
+                    End="-193.676194310351,24.9235304499168" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2218,30 +2297,30 @@ FROM     product_categories INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="366.714289694416,75.3176475821895">
+          TopLeft="352.380956361083,78.9176475821895">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="72.1428591377889,78.2823544597955"
+              EndConnector="86.4761924711215,74.6823544597956"
               Start="0,0"
-              End="72.1428591377889,70.7823544597955">
+              End="86.4761924711215,67.1823544597956">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.8559902161342" />
+                    End="0,26.2677383713709" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.8559902161342"
-                    Point2="0,26.8559902161342"
-                    Point3="4,26.8559902161342" />
+                    Point1="0,26.2677383713709"
+                    Point2="0,30.2677383713709"
+                    Point3="4,30.2677383713709" />
                   <mssgle:LineSegment
-                    End="68.1428591377889,26.8559902161342" />
+                    End="82.4761924711215,30.2677383713709" />
                   <mssgle:CubicBezierSegment
-                    Point1="68.1428591377889,26.8559902161342"
-                    Point2="72.1428591377889,26.8559902161342"
-                    Point3="72.1428591377889,30.8559902161342" />
+                    Point1="82.4761924711215,30.2677383713709"
+                    Point2="86.4761924711215,30.2677383713709"
+                    Point3="86.4761924711215,34.2677383713709" />
                   <mssgle:LineSegment
-                    End="72.1428591377889,70.7823544597955" />
+                    End="86.4761924711215,67.1823544597956" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2252,30 +2331,30 @@ FROM     product_categories INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="413.714289694416,54.3176475821895">
+          TopLeft="413.714289694416,58.1176475821894">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="104.000004564013,32.1882355772499"
+              EndConnector="104.000004564013,28.18823557725"
               Start="0,0"
-              End="96.500004564013,32.1882355772499">
+              End="96.5000045640128,28.18823557725">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="48.0000022820065,0" />
+                    End="48.0000022820064,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="48.0000022820065,0"
-                    Point2="52.0000022820065,0"
-                    Point3="52.0000022820065,4" />
+                    Point1="48.0000022820064,0"
+                    Point2="52.0000022820064,0"
+                    Point3="52.0000022820064,4" />
                   <mssgle:LineSegment
-                    End="52.0000022820065,28.1882355772499" />
+                    End="52.0000022820064,24.18823557725" />
                   <mssgle:CubicBezierSegment
-                    Point1="52.0000022820065,28.1882355772499"
-                    Point2="52.0000022820065,32.1882355772499"
-                    Point3="56.0000022820065,32.1882355772499" />
+                    Point1="52.0000022820064,24.18823557725"
+                    Point2="52.0000022820064,28.18823557725"
+                    Point3="56.0000022820064,28.18823557725" />
                   <mssgle:LineSegment
-                    End="96.500004564013,32.1882355772499" />
+                    End="96.5000045640128,28.18823557725" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2286,30 +2365,30 @@ FROM     product_categories INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="323.714289694416,75.3176475821895">
+          TopLeft="323.714289694416,78.9176475821895">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-61.7428581159941,125.952943475849"
+              EndConnector="-61.5428581159941,122.352943475849"
               Start="0,0"
-              End="-61.7428581159941,118.452943475849">
+              End="-61.5428581159941,114.852943475849">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,58.9764717379243" />
+                    End="0,57.1764717379243" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,58.9764717379243"
-                    Point2="0,62.9764717379243"
-                    Point3="-4,62.9764717379243" />
+                    Point1="0,57.1764717379243"
+                    Point2="0,61.1764717379243"
+                    Point3="-4,61.1764717379243" />
                   <mssgle:LineSegment
-                    End="-57.7428581159941,62.9764717379243" />
+                    End="-57.5428581159941,61.1764717379243" />
                   <mssgle:CubicBezierSegment
-                    Point1="-57.7428581159941,62.9764717379243"
-                    Point2="-61.7428581159941,62.9764717379243"
-                    Point3="-61.7428581159941,66.9764717379243" />
+                    Point1="-57.5428581159941,61.1764717379243"
+                    Point2="-61.5428581159941,61.1764717379243"
+                    Point3="-61.5428581159941,65.1764717379243" />
                   <mssgle:LineSegment
-                    End="-61.7428581159941,118.452943475849" />
+                    End="-61.5428581159941,114.852943475849" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2325,47 +2404,77 @@ FROM     product_categories INNER JOIN
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="170,42"
+          Size="170.4,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="283.6,166.4" />
+          TopLeft="387.2,210.4" />
         <NodeLayout
-          Size="150,42"
+          Size="149.6,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="308.914283699892,3.76470527318934" />
+          TopLeft="427.2,47.2" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="428,127.2" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="383.914283699892,45.7647052731893">
+          TopLeft="503.8,88.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-15.314283699892,120.635294726811"
+              EndConnector="0,38.4"
               Start="0,0"
-              End="-15.314283699892,113.135294726811">
+              End="0,30.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.3176473634053" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.3176473634053"
-                    Point2="0,60.3176473634053"
-                    Point3="-4,60.3176473634053" />
-                  <mssgle:LineSegment
-                    End="-11.314283699892,60.3176473634053" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-11.314283699892,60.3176473634053"
-                    Point2="-15.314283699892,60.3176473634053"
-                    Point3="-15.314283699892,64.3176473634053" />
-                  <mssgle:LineSegment
-                    End="-15.314283699892,113.135294726811" />
+                    End="0,30.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="505.6,168.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.1999999999998,41.6"
+              Start="0,0"
+              End="-33.1999999999998,34.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.8"
+                    Point2="0,20.8"
+                    Point3="-4,20.8" />
+                  <mssgle:LineSegment
+                    End="-29.1999999999998,20.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.1999999999998,20.8"
+                    Point2="-33.1999999999998,20.8"
+                    Point3="-33.1999999999998,24.8" />
+                  <mssgle:LineSegment
+                    End="-33.1999999999998,34.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2396,17 +2505,17 @@ FROM     product_categories INNER JOIN
     design-time-name="Package\DF - Staging Customer">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="174,42"
+          Size="174.4,41.6"
           Id="Package\DF - Staging Customer\SRC - OT Customers"
           TopLeft="234.285718275576,32.4235298664925" />
         <NodeLayout
-          Size="168,42"
+          Size="167.2,41.6"
           Id="Package\DF - Staging Customer\DST - stgCustomer"
           TopLeft="241.142861249496,200.047061629114" />
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\DF - Staging Customer\Data Conversion"
           TopLeft="294.28571929737,116.847060462265" />
         <EdgeLayout
@@ -2440,41 +2549,45 @@ FROM     product_categories INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF - Staging Customer.Paths[Data Conversion Output]"
-          TopLeft="371.78571929737,158.847060462265">
+          TopLeft="371.88571929737,158.447060462265">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-46.642858047874,41.200001166849"
+              EndConnector="-47.1428580478746,41.6000011668485"
               Start="0,0"
-              End="-46.642858047874,33.700001166849">
+              End="-47.1428580478746,34.1000011668485">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.6000005834245" />
+                    End="0,16.8000005834243" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.6000005834245"
-                    Point2="0,20.6000005834245"
-                    Point3="-4,20.6000005834245" />
+                    Point1="0,16.8000005834243"
+                    Point2="0,20.8000005834243"
+                    Point3="-4,20.8000005834243" />
                   <mssgle:LineSegment
-                    End="-42.642858047874,20.6000005834245" />
+                    End="-43.1428580478746,20.8000005834243" />
                   <mssgle:CubicBezierSegment
-                    Point1="-42.642858047874,20.6000005834245"
-                    Point2="-46.642858047874,20.6000005834245"
-                    Point3="-46.642858047874,24.6000005834245" />
+                    Point1="-43.1428580478746,20.8000005834243"
+                    Point2="-47.1428580478746,20.8000005834243"
+                    Point3="-47.1428580478746,24.8000005834243" />
                   <mssgle:LineSegment
-                    End="-46.642858047874,33.700001166849" />
+                    End="-47.1428580478746,34.1000011668485" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2512,17 +2625,17 @@ FROM     product_categories INNER JOIN
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
+          Size="170.4,41.6"
+          Id="Package\DF - Staging Employee\OLE DB Destination"
+          TopLeft="431.2,220" />
+        <NodeLayout
+          Size="149.6,41.6"
           Id="Package\DF - Staging Employee\OLE DB Source"
           TopLeft="412.8,44.8" />
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\DF - Staging Employee\Data Conversion"
           TopLeft="443.2,136.8" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\DF - Staging Employee\OLE DB Destination"
-          TopLeft="431.2,220" />
         <EdgeLayout
           Id="Package\DF - Staging Employee.Paths[OLE DB Source Output]"
           TopLeft="487.6,86.4">
@@ -2583,7 +2696,7 @@ FROM     product_categories INNER JOIN
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF - Staging Employee\OLE DB Source">
+    design-time-name="Package\DF - Staging Employee\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2596,7 +2709,7 @@ FROM     product_categories INNER JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF - Staging Employee\OLE DB Destination">
+    design-time-name="Package\DF - Staging Employee\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2612,85 +2725,89 @@ FROM     product_categories INNER JOIN
     design-time-name="Package\DF - Staging Product">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="170,42"
+          Size="170.4,41.6"
           Id="Package\DF - Staging Product\OLE DB Destination"
           TopLeft="348.8,244.8" />
         <NodeLayout
-          Size="150,42"
+          Size="149.6,41.6"
           Id="Package\DF - Staging Product\OLE DB Source"
           TopLeft="360.8,56.8" />
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\DF - Staging Product\Data Conversion"
-          TopLeft="386.2,158" />
+          TopLeft="379.2,160" />
         <EdgeLayout
           Id="Package\DF - Staging Product.Paths[OLE DB Source Output]"
-          TopLeft="435.8,98.8">
+          TopLeft="435.6,98.4">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="27.9,59.2"
+              EndConnector="21.2000000000001,61.6000000000001"
               Start="0,0"
-              End="27.9,51.7">
+              End="21.2000000000001,54.1000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.6" />
+                    End="0,26.8" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.6"
-                    Point2="0,29.6"
-                    Point3="4,29.6" />
+                    Point1="0,26.8"
+                    Point2="0,30.8"
+                    Point3="4,30.8" />
                   <mssgle:LineSegment
-                    End="23.9,29.6" />
+                    End="17.2000000000001,30.8" />
                   <mssgle:CubicBezierSegment
-                    Point1="23.9,29.6"
-                    Point2="27.9,29.6"
-                    Point3="27.9,33.6" />
+                    Point1="17.2000000000001,30.8"
+                    Point2="21.2000000000001,30.8"
+                    Point3="21.2000000000001,34.8" />
                   <mssgle:LineSegment
-                    End="27.9,51.7" />
+                    End="21.2000000000001,54.1000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF - Staging Product.Paths[Data Conversion Output]"
-          TopLeft="463.7,200">
+          TopLeft="456.8,201.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-29.9,44.8"
+              EndConnector="-22.8000000000001,43.1999999999999"
               Start="0,0"
-              End="-29.9,37.3">
+              End="-22.8000000000001,35.6999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.4" />
+                    End="0,17.6" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.4"
-                    Point2="0,22.4"
-                    Point3="-4,22.4" />
+                    Point1="0,17.6"
+                    Point2="0,21.6"
+                    Point3="-4,21.6" />
                   <mssgle:LineSegment
-                    End="-25.9,22.4" />
+                    End="-18.8000000000001,21.6" />
                   <mssgle:CubicBezierSegment
-                    Point1="-25.9,22.4"
-                    Point2="-29.9,22.4"
-                    Point3="-29.9,26.4" />
+                    Point1="-18.8000000000001,21.6"
+                    Point2="-22.8000000000001,21.6"
+                    Point3="-22.8000000000001,25.6" />
                   <mssgle:LineSegment
-                    End="-29.9,37.3" />
+                    End="-22.8000000000001,35.6999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

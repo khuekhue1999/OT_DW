@@ -11,10 +11,22 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{86122F3D-4CC8-49A8-8FFF-4C78593AC798}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{62E3C981-40EF-4CF6-BE98-17A797EA5D74}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.OTStaging 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{34C884DB-8F50-4AD9-A752-A6458E2A42D7}"
+      DTS:ObjectName="LocalHost.OTStaging 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=OTStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -258,19 +270,19 @@
                       externalMetadataColumnId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
                       lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[customer_id]" />
                     <inputColumn
-                      refId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[(nvarchar)name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="(nvarchar)name"
-                      externalMetadataColumnId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
-                      lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)name]" />
-                    <inputColumn
-                      refId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[(nvarchar)address]"
+                      refId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[name]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)address"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[name]" />
+                    <inputColumn
+                      refId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[address]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="address"
                       externalMetadataColumnId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
-                      lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)address]" />
+                      lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[address]" />
                     <inputColumn
                       refId="Package\DF - DimCustomer\Insert Destination.Inputs[OLE DB Destination Input].Columns[RowIsCurrent]"
                       cachedDataType="bool"
@@ -471,7 +483,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DST - stgCustomer]</property>
+                  name="OpenRowset">[dbo].[stgCustomer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -526,24 +538,24 @@
                       name="customer_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)name]"
+                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(nvarchar)name]"
-                      length="50"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)name]"
-                      name="(nvarchar)name"
+                      externalMetadataColumnId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="255"
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)address]"
+                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[address]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(nvarchar)address]"
+                      externalMetadataColumnId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[address]"
                       length="255"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)address]"
-                      name="(nvarchar)address"
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[address]"
+                      name="address"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -553,15 +565,15 @@
                       dataType="i4"
                       name="customer_id" />
                     <externalMetadataColumn
-                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(nvarchar)name]"
-                      dataType="wstr"
-                      length="50"
-                      name="(nvarchar)name" />
-                    <externalMetadataColumn
-                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(nvarchar)address]"
+                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[name]"
                       dataType="wstr"
                       length="255"
-                      name="(nvarchar)address" />
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      dataType="wstr"
+                      length="255"
+                      name="address" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -575,17 +587,17 @@
                       lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customer_id]"
                       name="customer_id" />
                     <outputColumn
-                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(nvarchar)name]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(nvarchar)name]"
-                      name="(nvarchar)name" />
-                    <outputColumn
-                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(nvarchar)address]"
+                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[name]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(nvarchar)address]"
-                      name="(nvarchar)address" />
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[address]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[address]"
+                      name="address" />
                     <outputColumn
                       refId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -664,12 +676,12 @@
                   name="Slowly Changing Dimension Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF - DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[(nvarchar)address]"
+                      refId="Package\DF - DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[address]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)address"
+                      cachedName="address"
                       externalMetadataColumnId="Package\DF - DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Address]"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)address]">
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[address]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -691,12 +703,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[(nvarchar)name]"
+                      refId="Package\DF - DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[name]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="(nvarchar)name"
+                      cachedLength="255"
+                      cachedName="name"
                       externalMetadataColumnId="Package\DF - DimCustomer\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CustomerName]"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)name]">
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -805,31 +817,31 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimCustomer\Union All.Inputs[Union All Input 1].Columns[(nvarchar)name]"
+                      refId="Package\DF - DimCustomer\Union All.Inputs[Union All Input 1].Columns[name]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="(nvarchar)name"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)name]">
+                      cachedLength="255"
+                      cachedName="name"
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)name]}</property>
+                          name="OutputColumnLineageID">#{Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[name]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimCustomer\Union All.Inputs[Union All Input 1].Columns[(nvarchar)address]"
+                      refId="Package\DF - DimCustomer\Union All.Inputs[Union All Input 1].Columns[address]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)address"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)address]">
+                      cachedName="address"
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[address]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)address]}</property>
+                          name="OutputColumnLineageID">#{Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[address]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -854,31 +866,31 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimCustomer\Union All.Inputs[Union All Input 2].Columns[(nvarchar)name]"
+                      refId="Package\DF - DimCustomer\Union All.Inputs[Union All Input 2].Columns[name]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="(nvarchar)name"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)name]">
+                      cachedLength="255"
+                      cachedName="name"
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)name]}</property>
+                          name="OutputColumnLineageID">#{Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[name]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimCustomer\Union All.Inputs[Union All Input 2].Columns[(nvarchar)address]"
+                      refId="Package\DF - DimCustomer\Union All.Inputs[Union All Input 2].Columns[address]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)address"
-                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)address]">
+                      cachedName="address"
+                      lineageId="Package\DF - DimCustomer\OLE DB Source.Outputs[OLE DB Source Output].Columns[address]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)address]}</property>
+                          name="OutputColumnLineageID">#{Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[address]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -903,17 +915,17 @@
                       lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[customer_id]"
                       name="customer_id" />
                     <outputColumn
-                      refId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)name]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)name]"
-                      name="(nvarchar)name" />
-                    <outputColumn
-                      refId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)address]"
+                      refId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[name]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[(nvarchar)address]"
-                      name="(nvarchar)address" />
+                      lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[address]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - DimCustomer\Union All.Outputs[Union All Output 1].Columns[address]"
+                      name="address" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -994,6 +1006,12 @@
                       cachedName="(nvarchar)last_name"
                       lineageId="Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)last_name]" />
                     <inputColumn
+                      refId="Package\DF - DimEmployee\Derived Column.Inputs[Derived Column Input].Columns[(nvarchar)first_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="(nvarchar)first_name"
+                      lineageId="Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)first_name]" />
+                    <inputColumn
                       refId="Package\DF - DimEmployee\Derived Column.Inputs[Derived Column Input].Columns[ManagerLastName]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -1005,23 +1023,6 @@
                       cachedLength="255"
                       cachedName="ManagerFirstName"
                       lineageId="Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerFirstName]" />
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Derived Column.Inputs[Derived Column Input].Columns[ManagerID]"
-                      cachedDataType="i4"
-                      cachedName="ManagerID"
-                      lineageId="Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerID]" />
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Derived Column.Inputs[Derived Column Input].Columns[ManagerJobTitle]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ManagerJobTitle"
-                      lineageId="Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerJobTitle]" />
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Derived Column.Inputs[Derived Column Input].Columns[(nvarchar)first_name]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="(nvarchar)first_name"
-                      lineageId="Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)first_name]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1039,7 +1040,7 @@
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="255"
+                      length="511"
                       lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[EmployeeName]"
                       name="EmployeeName"
                       truncationRowDisposition="FailComponent">
@@ -1048,13 +1049,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_WSTR,255)(#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)first_name]} + " " + #{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)last_name]})</property>
+                          name="Expression">#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)first_name]} + " " + #{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)last_name]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(DT_WSTR,255)([(nvarchar)first_name] + " " + [(nvarchar)last_name])</property>
+                          name="FriendlyExpression">[(nvarchar)first_name] + " " + [(nvarchar)last_name]</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -1062,7 +1063,7 @@
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="31"
+                      length="511"
                       lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerName]"
                       name="ManagerName"
                       truncationRowDisposition="FailComponent">
@@ -1071,104 +1072,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT]([REPLACENULL](#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerFirstName]},"N/A"),15) + " " + [LEFT]([REPLACENULL](#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerLastName]},"N/A"),15)</property>
+                          name="Expression">#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerFirstName]} + " " + #{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerLastName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LEFT(REPLACENULL(ManagerFirstName,"N/A"),15) + " " + LEFT(REPLACENULL(ManagerLastName,"N/A"),15)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerID1]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerID1]"
-                      name="ManagerID1"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerID]}) ? -1 : #{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerID]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(ManagerID) ? -1 : ManagerID</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerLastName1]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="15"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerLastName1]"
-                      name="ManagerLastName1"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT]([REPLACENULL](#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerLastName]},"N/A"),15)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(REPLACENULL(ManagerLastName,"N/A"),15)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerFirstName1]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="15"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerFirstName1]"
-                      name="ManagerFirstName1"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT]([REPLACENULL](#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerFirstName]},"N/A"),15)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(REPLACENULL(ManagerFirstName,"N/A"),15)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerJobTitle1]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="15"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerJobTitle1]"
-                      name="ManagerJobTitle1"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT]([REPLACENULL](#{Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerJobTitle]},"N/A"),15)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(REPLACENULL(ManagerJobTitle,"N/A"),15)</property>
+                          name="FriendlyExpression">ManagerFirstName + " " + ManagerLastName</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1428,7 +1338,7 @@
                     <inputColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[EmployeeName]"
                       cachedDataType="wstr"
-                      cachedLength="255"
+                      cachedLength="511"
                       cachedName="EmployeeName"
                       externalMetadataColumnId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeName]"
                       lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[EmployeeName]" />
@@ -1460,25 +1370,18 @@
                       externalMetadataColumnId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDateKey]"
                       lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[hire_date]" />
                     <inputColumn
-                      refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[ManagerID1]"
+                      refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[ManagerID]"
                       cachedDataType="i4"
-                      cachedName="ManagerID1"
+                      cachedName="ManagerID"
                       externalMetadataColumnId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ManagerID]"
-                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerID1]" />
+                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerID]" />
                     <inputColumn
-                      refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[ManagerName]"
+                      refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[ManagerJobTitle]"
                       cachedDataType="wstr"
-                      cachedLength="31"
-                      cachedName="ManagerName"
-                      externalMetadataColumnId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ManagerName]"
-                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerName]" />
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[ManagerJobTitle1]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ManagerJobTitle1"
+                      cachedLength="255"
+                      cachedName="ManagerJobTitle"
                       externalMetadataColumnId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ManagerJobTitle]"
-                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerJobTitle1]" />
+                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerJobTitle]" />
                     <inputColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[RowIsCurrent]"
                       cachedDataType="bool"
@@ -1499,40 +1402,37 @@
                     <externalMetadataColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeName]"
                       dataType="wstr"
-                      length="255"
+                      length="40"
                       name="EmployeeName" />
                     <externalMetadataColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[JobTitle]"
                       dataType="wstr"
-                      length="255"
+                      length="30"
                       name="JobTitle" />
                     <externalMetadataColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       dataType="wstr"
-                      length="255"
+                      length="30"
                       name="Email" />
                     <externalMetadataColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
                       dataType="wstr"
-                      length="50"
+                      length="30"
                       name="Phone" />
                     <externalMetadataColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDateKey]"
-                      dataType="dbDate"
+                      dataType="wstr"
+                      length="30"
                       name="HireDateKey" />
                     <externalMetadataColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ManagerID]"
-                      dataType="i4"
-                      name="ManagerID" />
-                    <externalMetadataColumn
-                      refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ManagerName]"
                       dataType="wstr"
-                      length="255"
-                      name="ManagerName" />
+                      length="30"
+                      name="ManagerID" />
                     <externalMetadataColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ManagerJobTitle]"
                       dataType="wstr"
-                      length="255"
+                      length="30"
                       name="ManagerJobTitle" />
                     <externalMetadataColumn
                       refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowIsCurrent]"
@@ -1551,6 +1451,11 @@
                       dataType="wstr"
                       length="200"
                       name="RowChangeReason" />
+                    <externalMetadataColumn
+                      refId="Package\DF - DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Manager]"
+                      dataType="wstr"
+                      length="30"
+                      name="Manager" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2094,7 +1999,7 @@ FROM     stgEmployee LEFT OUTER JOIN
                     <inputColumn
                       refId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[EmployeeName]"
                       cachedDataType="wstr"
-                      cachedLength="255"
+                      cachedLength="511"
                       cachedName="EmployeeName"
                       externalMetadataColumnId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EmployeeName]"
                       lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[EmployeeName]">
@@ -2133,11 +2038,11 @@ FROM     stgEmployee LEFT OUTER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ManagerID1]"
+                      refId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ManagerID]"
                       cachedDataType="i4"
-                      cachedName="ManagerID1"
+                      cachedName="ManagerID"
                       externalMetadataColumnId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ManagerID]"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerID1]">
+                      lineageId="Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerID]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2146,12 +2051,12 @@ FROM     stgEmployee LEFT OUTER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ManagerJobTitle1]"
+                      refId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ManagerJobTitle]"
                       cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ManagerJobTitle1"
+                      cachedLength="255"
+                      cachedName="ManagerJobTitle"
                       externalMetadataColumnId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ManagerJobTitle]"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerJobTitle1]">
+                      lineageId="Package\DF - DimEmployee\OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerJobTitle]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2162,7 +2067,7 @@ FROM     stgEmployee LEFT OUTER JOIN
                     <inputColumn
                       refId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ManagerName]"
                       cachedDataType="wstr"
-                      cachedLength="31"
+                      cachedLength="511"
                       cachedName="ManagerName"
                       externalMetadataColumnId="Package\DF - DimEmployee\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ManagerName]"
                       lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerName]">
@@ -2456,7 +2361,7 @@ FROM     stgEmployee LEFT OUTER JOIN
                     <inputColumn
                       refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 1].Columns[EmployeeName]"
                       cachedDataType="wstr"
-                      cachedLength="255"
+                      cachedLength="511"
                       cachedName="EmployeeName"
                       lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[EmployeeName]">
                       <properties>
@@ -2470,7 +2375,7 @@ FROM     stgEmployee LEFT OUTER JOIN
                     <inputColumn
                       refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 1].Columns[ManagerName]"
                       cachedDataType="wstr"
-                      cachedLength="31"
+                      cachedLength="511"
                       cachedName="ManagerName"
                       lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerName]">
                       <properties>
@@ -2479,61 +2384,6 @@ FROM     stgEmployee LEFT OUTER JOIN
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 1].Columns[ManagerID1]"
-                      cachedDataType="i4"
-                      cachedName="ManagerID1"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerID1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerID1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 1].Columns[ManagerLastName1]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ManagerLastName1"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerLastName1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerLastName1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 1].Columns[ManagerFirstName1]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ManagerFirstName1"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerFirstName1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerFirstName1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 1].Columns[ManagerJobTitle1]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ManagerJobTitle1"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerJobTitle1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerJobTitle1]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -2698,7 +2548,7 @@ FROM     stgEmployee LEFT OUTER JOIN
                     <inputColumn
                       refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 2].Columns[EmployeeName]"
                       cachedDataType="wstr"
-                      cachedLength="255"
+                      cachedLength="511"
                       cachedName="EmployeeName"
                       lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[EmployeeName]">
                       <properties>
@@ -2712,7 +2562,7 @@ FROM     stgEmployee LEFT OUTER JOIN
                     <inputColumn
                       refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 2].Columns[ManagerName]"
                       cachedDataType="wstr"
-                      cachedLength="31"
+                      cachedLength="511"
                       cachedName="ManagerName"
                       lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerName]">
                       <properties>
@@ -2721,61 +2571,6 @@ FROM     stgEmployee LEFT OUTER JOIN
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerName]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 2].Columns[ManagerID1]"
-                      cachedDataType="i4"
-                      cachedName="ManagerID1"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerID1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerID1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 2].Columns[ManagerLastName1]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ManagerLastName1"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerLastName1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerLastName1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 2].Columns[ManagerFirstName1]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ManagerFirstName1"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerFirstName1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerFirstName1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimEmployee\Union All.Inputs[Union All Input 2].Columns[ManagerJobTitle1]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="ManagerJobTitle1"
-                      lineageId="Package\DF - DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[ManagerJobTitle1]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerJobTitle1]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -2860,38 +2655,15 @@ FROM     stgEmployee LEFT OUTER JOIN
                     <outputColumn
                       refId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[EmployeeName]"
                       dataType="wstr"
-                      length="255"
+                      length="511"
                       lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[EmployeeName]"
                       name="EmployeeName" />
                     <outputColumn
                       refId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerName]"
                       dataType="wstr"
-                      length="31"
+                      length="511"
                       lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerName]"
                       name="ManagerName" />
-                    <outputColumn
-                      refId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerID1]"
-                      dataType="i4"
-                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerID1]"
-                      name="ManagerID1" />
-                    <outputColumn
-                      refId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerLastName1]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerLastName1]"
-                      name="ManagerLastName1" />
-                    <outputColumn
-                      refId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerFirstName1]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerFirstName1]"
-                      name="ManagerFirstName1" />
-                    <outputColumn
-                      refId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerJobTitle1]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\DF - DimEmployee\Union All.Outputs[Union All Output 1].Columns[ManagerJobTitle1]"
-                      name="ManagerJobTitle1" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -3184,19 +2956,19 @@ FROM     stgEmployee LEFT OUTER JOIN
                       externalMetadataColumnId="Package\DF - DimProduct\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[product_id]" />
                     <inputColumn
-                      refId="Package\DF - DimProduct\Insert Destination.Inputs[OLE DB Destination Input].Columns[(nvarchar)product_name]"
+                      refId="Package\DF - DimProduct\Insert Destination.Inputs[OLE DB Destination Input].Columns[product_name]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)product_name"
+                      cachedName="product_name"
                       externalMetadataColumnId="Package\DF - DimProduct\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)product_name]" />
+                      lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[product_name]" />
                     <inputColumn
-                      refId="Package\DF - DimProduct\Insert Destination.Inputs[OLE DB Destination Input].Columns[(nvarchar)category_name]"
+                      refId="Package\DF - DimProduct\Insert Destination.Inputs[OLE DB Destination Input].Columns[category_name]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)category_name"
+                      cachedName="category_name"
                       externalMetadataColumnId="Package\DF - DimProduct\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
-                      lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)category_name]" />
+                      lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[category_name]" />
                     <inputColumn
                       refId="Package\DF - DimProduct\Insert Destination.Inputs[OLE DB Destination Input].Columns[RowIsCurrent]"
                       cachedDataType="bool"
@@ -3452,6 +3224,16 @@ FROM     stgEmployee LEFT OUTER JOIN
                       name="product_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      length="255"
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
+                      name="product_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[list_price]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
@@ -3474,24 +3256,14 @@ FROM     stgEmployee LEFT OUTER JOIN
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)product_name]"
+                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(nvarchar)product_name]"
+                      externalMetadataColumnId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_name]"
                       length="255"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)product_name]"
-                      name="(nvarchar)product_name"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)category_name]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(nvarchar)category_name]"
-                      length="255"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)category_name]"
-                      name="(nvarchar)category_name"
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]"
+                      name="category_name"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -3500,6 +3272,11 @@ FROM     stgEmployee LEFT OUTER JOIN
                       refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
                       dataType="i4"
                       name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_name" />
                     <externalMetadataColumn
                       refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[list_price]"
                       dataType="numeric"
@@ -3513,15 +3290,10 @@ FROM     stgEmployee LEFT OUTER JOIN
                       precision="9"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(nvarchar)product_name]"
+                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_name]"
                       dataType="wstr"
                       length="255"
-                      name="(nvarchar)product_name" />
-                    <externalMetadataColumn
-                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(nvarchar)category_name]"
-                      dataType="wstr"
-                      length="255"
-                      name="(nvarchar)category_name" />
+                      name="category_name" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3535,17 +3307,11 @@ FROM     stgEmployee LEFT OUTER JOIN
                       lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
                       name="product_id" />
                     <outputColumn
-                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(nvarchar)product_name]"
+                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(nvarchar)product_name]"
-                      name="(nvarchar)product_name" />
-                    <outputColumn
-                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(nvarchar)category_name]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(nvarchar)category_name]"
-                      name="(nvarchar)category_name" />
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      name="product_name" />
                     <outputColumn
                       refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[list_price]"
                       dataType="numeric"
@@ -3560,6 +3326,12 @@ FROM     stgEmployee LEFT OUTER JOIN
                       name="standard_cost"
                       precision="9"
                       scale="2" />
+                    <outputColumn
+                      refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_name]"
+                      name="category_name" />
                     <outputColumn
                       refId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3638,12 +3410,12 @@ FROM     stgEmployee LEFT OUTER JOIN
                   name="Slowly Changing Dimension Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DF - DimProduct\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[(nvarchar)category_name]"
+                      refId="Package\DF - DimProduct\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[category_name]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)category_name"
+                      cachedName="category_name"
                       externalMetadataColumnId="Package\DF - DimProduct\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CategoryName]"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)category_name]">
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -3665,12 +3437,12 @@ FROM     stgEmployee LEFT OUTER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimProduct\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[(nvarchar)product_name]"
+                      refId="Package\DF - DimProduct\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[product_name]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)product_name"
+                      cachedName="product_name"
                       externalMetadataColumnId="Package\DF - DimProduct\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ProductName]"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)product_name]">
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -3779,6 +3551,20 @@ FROM     stgEmployee LEFT OUTER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
+                      refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 1].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_name"
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[product_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 1].Columns[list_price]"
                       cachedDataType="numeric"
                       cachedName="list_price"
@@ -3809,31 +3595,17 @@ FROM     stgEmployee LEFT OUTER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 1].Columns[(nvarchar)product_name]"
+                      refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 1].Columns[category_name]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)product_name"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)product_name]">
+                      cachedName="category_name"
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)product_name]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 1].Columns[(nvarchar)category_name]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="(nvarchar)category_name"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)category_name]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)category_name]}</property>
+                          name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[category_name]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -3855,6 +3627,20 @@ FROM     stgEmployee LEFT OUTER JOIN
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[product_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 2].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_name"
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[product_name]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -3888,31 +3674,17 @@ FROM     stgEmployee LEFT OUTER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 2].Columns[(nvarchar)product_name]"
+                      refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 2].Columns[category_name]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="(nvarchar)product_name"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)product_name]">
+                      cachedName="category_name"
+                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)product_name]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\DF - DimProduct\Union All.Inputs[Union All Input 2].Columns[(nvarchar)category_name]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="(nvarchar)category_name"
-                      lineageId="Package\DF - DimProduct\OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)category_name]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)category_name]}</property>
+                          name="OutputColumnLineageID">#{Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[category_name]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -3937,6 +3709,12 @@ FROM     stgEmployee LEFT OUTER JOIN
                       lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[product_id]"
                       name="product_id" />
                     <outputColumn
+                      refId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[product_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[product_name]"
+                      name="product_name" />
+                    <outputColumn
                       refId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[list_price]"
                       dataType="numeric"
                       lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[list_price]"
@@ -3951,17 +3729,11 @@ FROM     stgEmployee LEFT OUTER JOIN
                       precision="9"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)product_name]"
+                      refId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[category_name]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)product_name]"
-                      name="(nvarchar)product_name" />
-                    <outputColumn
-                      refId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)category_name]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[(nvarchar)category_name]"
-                      name="(nvarchar)category_name" />
+                      lineageId="Package\DF - DimProduct\Union All.Outputs[Union All Output 1].Columns[category_name]"
+                      name="category_name" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4055,10 +3827,10 @@ FROM     stgEmployee LEFT OUTER JOIN
                       cachedScale="2"
                       lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[standard_cost]" />
                     <inputColumn
-                      refId="Package\DF - FactSale\Derived Column.Inputs[Derived Column Input].Columns[productquantity]"
+                      refId="Package\DF - FactSale\Derived Column.Inputs[Derived Column Input].Columns[(int)quantity]"
                       cachedDataType="i4"
-                      cachedName="productquantity"
-                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]" />
+                      cachedName="(int)quantity"
+                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4100,21 +3872,21 @@ FROM     stgEmployee LEFT OUTER JOIN
                       errorRowDisposition="FailComponent"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[SoldAmount]"
                       name="SoldAmount"
-                      precision="38"
-                      scale="4"
+                      precision="19"
+                      scale="2"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[unit_price]} * #{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]}</property>
+                          name="Expression">#{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[unit_price]} * #{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">unit_price * productquantity</property>
+                          name="FriendlyExpression">unit_price * [(int)quantity]</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -4124,21 +3896,21 @@ FROM     stgEmployee LEFT OUTER JOIN
                       errorRowDisposition="FailComponent"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[Profit]"
                       name="Profit"
-                      precision="38"
-                      scale="4"
+                      precision="21"
+                      scale="2"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]} * (#{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[unit_price]} - #{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[standard_cost]})</property>
+                          name="Expression">#{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]} * (#{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[unit_price]} - #{Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[standard_cost]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">productquantity * (unit_price - standard_cost)</property>
+                          name="FriendlyExpression">[(int)quantity] * (unit_price - standard_cost)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -4272,11 +4044,11 @@ FROM     stgEmployee LEFT OUTER JOIN
                       externalMetadataColumnId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
                       lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_id]" />
                     <inputColumn
-                      refId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].Columns[productquantity]"
+                      refId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].Columns[(int)quantity]"
                       cachedDataType="i4"
-                      cachedName="productquantity"
+                      cachedName="(int)quantity"
                       externalMetadataColumnId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
-                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]" />
+                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]" />
                     <inputColumn
                       refId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].Columns[standard_cost]"
                       cachedDataType="numeric"
@@ -4297,16 +4069,16 @@ FROM     stgEmployee LEFT OUTER JOIN
                       refId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].Columns[SoldAmount]"
                       cachedDataType="numeric"
                       cachedName="SoldAmount"
-                      cachedPrecision="38"
-                      cachedScale="4"
+                      cachedPrecision="19"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldAmount]"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[SoldAmount]" />
                     <inputColumn
                       refId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].Columns[Profit]"
                       cachedDataType="numeric"
                       cachedName="Profit"
-                      cachedPrecision="38"
-                      cachedScale="4"
+                      cachedPrecision="21"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\DF - FactSale\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Profit]"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[Profit]" />
                   </inputColumns>
@@ -4646,7 +4418,7 @@ where [refTable].[EmployeeID] = ?</property>
                 <output
                   refId="Package\DF - FactSale\Lookup EmployeeID.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="IgnoreFailure"
+                  errorRowDisposition="RedirectRow"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\DF - FactSale\Lookup EmployeeID.Inputs[Lookup Input]">
@@ -5034,7 +4806,7 @@ where [refTable].[ProductID] = ?</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[FactSales] SET [EmployeeKey] = ?,[Profit] = ?,[Quantity] = ?,[SoldAmount] = ?,[StandardCost] = ?,[UnitPrice] = ? WHERE [CustomerKey] = ? AND [OrderDateKey] = ? AND [OrderID] = ? AND [ProductKey] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[FactSales] SET [Profit] = ?,[Quantity] = ?,[SoldAmount] = ?,[StandardCost] = ?,[UnitPrice] = ? WHERE [CustomerKey] = ? AND [OrderDateKey] = ? AND [OrderID] = ? AND [ProductKey] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -5060,53 +4832,47 @@ where [refTable].[ProductID] = ?</property>
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[CustomerKey]"
                       cachedDataType="i4"
                       cachedName="CustomerKey"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\DF - FactSale\Lookup CustomerID.Outputs[Lookup Match Output].Columns[CustomerKey]" />
-                    <inputColumn
-                      refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[EmployeeKey]"
-                      cachedDataType="i4"
-                      cachedName="EmployeeKey"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\DF - FactSale\Lookup EmployeeID.Outputs[Lookup Match Output].Columns[EmployeeKey]" />
                     <inputColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[int(OrderDate)]"
                       cachedDataType="i4"
                       cachedName="int(OrderDate)"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[int(OrderDate)]" />
                     <inputColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[order_id]"
                       cachedDataType="i4"
                       cachedName="order_id"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                       lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_id]" />
                     <inputColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[ProductKey]"
                       cachedDataType="i4"
                       cachedName="ProductKey"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                       lineageId="Package\DF - FactSale\Lookup Product.Outputs[Lookup Match Output].Columns[ProductKey]" />
                     <inputColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[Profit]"
                       cachedDataType="numeric"
                       cachedName="Profit"
-                      cachedPrecision="38"
-                      cachedScale="4"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      cachedPrecision="21"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[Profit]" />
                     <inputColumn
-                      refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[productquantity]"
+                      refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[(int)quantity]"
                       cachedDataType="i4"
-                      cachedName="productquantity"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]" />
+                      cachedName="(int)quantity"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]" />
                     <inputColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[SoldAmount]"
                       cachedDataType="numeric"
                       cachedName="SoldAmount"
-                      cachedPrecision="38"
-                      cachedScale="4"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      cachedPrecision="19"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[SoldAmount]" />
                     <inputColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[standard_cost]"
@@ -5114,7 +4880,7 @@ where [refTable].[ProductID] = ?</property>
                       cachedName="standard_cost"
                       cachedPrecision="9"
                       cachedScale="2"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[standard_cost]" />
                     <inputColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].Columns[unit_price]"
@@ -5122,26 +4888,15 @@ where [refTable].[ProductID] = ?</property>
                       cachedName="unit_price"
                       cachedPrecision="8"
                       cachedScale="2"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[unit_price]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="i4"
-                      name="Param_0">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="numeric"
-                      name="Param_1"
+                      name="Param_0"
                       precision="18">
                       <properties>
                         <property
@@ -5151,9 +4906,21 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       dataType="i4"
-                      name="Param_2">
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="numeric"
+                      name="Param_2"
+                      precision="18">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5187,9 +4954,8 @@ where [refTable].[ProductID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      dataType="numeric"
-                      name="Param_5"
-                      precision="18">
+                      dataType="i4"
+                      name="Param_5">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5223,17 +4989,6 @@ where [refTable].[ProductID] = ?</property>
                       refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                       dataType="i4"
                       name="Param_8">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DF - FactSale\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
-                      dataType="i4"
-                      name="Param_9">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5405,13 +5160,13 @@ where [refTable].[ProductID] = ?</property>
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]"
+                      refId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[productquantity]"
-                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]"
-                      name="productquantity"
+                      externalMetadataColumnId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(int)quantity]"
+                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]"
+                      name="(int)quantity"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -5449,9 +5204,9 @@ where [refTable].[ProductID] = ?</property>
                       precision="9"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[productquantity]"
+                      refId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[(int)quantity]"
                       dataType="i4"
-                      name="productquantity" />
+                      name="(int)quantity" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5499,10 +5254,10 @@ where [refTable].[ProductID] = ?</property>
                       precision="9"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[productquantity]"
+                      refId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(int)quantity]"
                       dataType="i4"
-                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[productquantity]"
-                      name="productquantity" />
+                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[(int)quantity]"
+                      name="(int)quantity" />
                     <outputColumn
                       refId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -5603,7 +5358,7 @@ where [refTable].[ProductID] = ?</property>
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">2</property>
+                          typeConverter="ColumnType">4</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -5649,8 +5404,8 @@ where [refTable].[ProductID] = ?</property>
                       refId="Package\DF - FactSale\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Profit]"
                       cachedDataType="numeric"
                       cachedName="Profit"
-                      cachedPrecision="38"
-                      cachedScale="4"
+                      cachedPrecision="21"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\DF - FactSale\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Profit]"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[Profit]">
                       <properties>
@@ -5661,11 +5416,11 @@ where [refTable].[ProductID] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DF - FactSale\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[productquantity]"
+                      refId="Package\DF - FactSale\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[(int)quantity]"
                       cachedDataType="i4"
-                      cachedName="productquantity"
+                      cachedName="(int)quantity"
                       externalMetadataColumnId="Package\DF - FactSale\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Quantity]"
-                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]">
+                      lineageId="Package\DF - FactSale\OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5677,8 +5432,8 @@ where [refTable].[ProductID] = ?</property>
                       refId="Package\DF - FactSale\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[SoldAmount]"
                       cachedDataType="numeric"
                       cachedName="SoldAmount"
-                      cachedPrecision="38"
-                      cachedScale="4"
+                      cachedPrecision="19"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\DF - FactSale\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[SoldAmount]"
                       lineageId="Package\DF - FactSale\Derived Column.Outputs[Derived Column Output].Columns[SoldAmount]">
                       <properties>
@@ -6031,27 +5786,27 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="150,42"
+          Size="149.6,41.6"
           Id="Package\DF - DimCustomer\OLE DB Source"
-          TopLeft="157.5,5.5" />
+          TopLeft="156.1,5.49999999999995" />
         <NodeLayout
-          Size="208,42"
+          Size="208,41.6"
           Id="Package\DF - DimCustomer\Slowly Changing Dimension"
-          TopLeft="128.5,107.5" />
+          TopLeft="126.9,107.1" />
         <EdgeLayout
           Id="Package\DF - DimCustomer.Paths[OLE DB Source Output]"
-          TopLeft="232.5,47.5">
+          TopLeft="230.9,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6061,18 +5816,18 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="154,42"
+          Size="152.8,41.6"
           Id="Package\DF - DimCustomer\Derived Column"
-          TopLeft="17.5,209.5" />
+          TopLeft="17.5,208.7" />
         <EdgeLayout
           Id="Package\DF - DimCustomer.Paths[Historical Attribute Inserts Output]"
-          TopLeft="199.166666666667,149.5">
+          TopLeft="197.566666666667,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104.666666666667,60"
+              EndConnector="-103.666666666667,59.9999999999999"
               Start="0,0"
-              End="-104.666666666667,52.5">
+              End="-103.666666666667,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6083,41 +5838,41 @@ where [refTable].[ProductID] = ?</property>
                     Point2="0,24.2748091603053"
                     Point3="-4,24.2748091603053" />
                   <mssgle:LineSegment
-                    End="-100.666666666667,24.2748091603053" />
+                    End="-99.6666666666667,24.2748091603053" />
                   <mssgle:CubicBezierSegment
-                    Point1="-100.666666666667,24.2748091603053"
-                    Point2="-104.666666666667,24.2748091603053"
-                    Point3="-104.666666666667,28.2748091603053" />
+                    Point1="-99.6666666666667,24.2748091603053"
+                    Point2="-103.666666666667,24.2748091603053"
+                    Point3="-103.666666666667,28.2748091603053" />
                   <mssgle:LineSegment
-                    End="-104.666666666667,52.5" />
+                    End="-103.666666666667,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-127.389720052083,29.2748091603053,150.1127734375,11.609375"
+              BoundingBox="-126.889720052083,29.2748091603053,150.1127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="166,42"
+          Size="164.8,41.6"
           Id="Package\DF - DimCustomer\OLE DB Command"
-          TopLeft="5.50000000000003,311.5" />
+          TopLeft="5.50000000000003,310.3" />
         <EdgeLayout
           Id="Package\DF - DimCustomer.Paths[Derived Column Output]"
-          TopLeft="91.5,251.5">
+          TopLeft="90.9,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6127,71 +5882,71 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="121,42"
+          Size="120,41.6"
           Id="Package\DF - DimCustomer\Union All"
-          TopLeft="172,413.5" />
+          TopLeft="170.9,411.9" />
         <EdgeLayout
           Id="Package\DF - DimCustomer.Paths[New Output]"
-          TopLeft="265.833333333333,149.5">
+          TopLeft="264.233333333333,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.5,264"
+              EndConnector="-14.6666666666666,263.2"
               Start="0,0"
-              End="-14.5,256.5">
+              End="-14.6666666666666,255.7">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,127.110663672268" />
+                    End="0,126.695815115553" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,127.110663672268"
-                    Point2="0,131.110663672268"
-                    Point3="-4,131.110663672268" />
+                    Point1="0,126.695815115553"
+                    Point2="0,130.695815115553"
+                    Point3="-4,130.695815115553" />
                   <mssgle:LineSegment
-                    End="-10.5,131.110663672268" />
+                    End="-10.6666666666666,130.695815115553" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.5,131.110663672268"
-                    Point2="-14.5,131.110663672268"
-                    Point3="-14.5,135.110663672268" />
+                    Point1="-10.6666666666666,130.695815115553"
+                    Point2="-14.6666666666666,130.695815115553"
+                    Point3="-14.6666666666666,134.695815115553" />
                   <mssgle:LineSegment
-                    End="-14.5,256.5" />
+                    End="-14.6666666666666,255.7" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.34138671875,136.110663672268,54.1827734375,11.43359375"
+              BoundingBox="-34.4247200520833,135.695815115553,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF - DimCustomer.Paths[OLE DB Command Output]"
-          TopLeft="88.5,353.5">
+          TopLeft="87.9,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
+              EndConnector="124.333333333333,59.9999999999999"
               Start="0,0"
-              End="125.166666666667,52.5">
+              End="124.333333333333,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,31.5263157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
                   <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
+                    End="120.333333333333,35.5263157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
                   <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
+                    End="124.333333333333,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6201,23 +5956,23 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="162.4,41.6"
           Id="Package\DF - DimCustomer\Derived Column 1"
-          TopLeft="151,515.5" />
+          TopLeft="149.7,513.5" />
         <EdgeLayout
           Id="Package\DF - DimCustomer.Paths[Union All Output 1]"
-          TopLeft="232.5,455.5">
+          TopLeft="230.9,453.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6227,23 +5982,23 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="162.4,41.6"
           Id="Package\DF - DimCustomer\Insert Destination"
-          TopLeft="151,617.5" />
+          TopLeft="149.7,615.099999999999" />
         <EdgeLayout
           Id="Package\DF - DimCustomer.Paths[Derived Column Output1]"
-          TopLeft="232.5,557.5">
+          TopLeft="230.9,555.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6280,7 +6035,7 @@ where [refTable].[ProductID] = ?</property>
   &lt;TableName&gt;[dbo].[DimCustomer]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)address]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[address]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Address&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
@@ -6292,7 +6047,7 @@ where [refTable].[ProductID] = ?</property>
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)name]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[name]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;CustomerName&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
@@ -6326,21 +6081,9 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="162,42"
-          Id="Package\DF - DimEmployee\Insert Destination"
-          TopLeft="149.7,716.699999999999" />
-        <NodeLayout
-          Size="162,42"
-          Id="Package\DF - DimEmployee\Derived Column 1"
-          TopLeft="7.70000000000003,310.3" />
-        <NodeLayout
-          Size="120,42"
-          Id="Package\DF - DimEmployee\Union All"
-          TopLeft="170.9,513.5" />
-        <NodeLayout
-          Size="204,42"
-          Id="Package\DF - DimEmployee\Slowly Changing Dimension"
-          TopLeft="128.9,208.7" />
+          Size="153,42"
+          Id="Package\DF - DimEmployee\Derived Column"
+          TopLeft="154.5,107.1" />
         <NodeLayout
           Size="162,42"
           Id="Package\DF - DimEmployee\Derived Column 2"
@@ -6354,9 +6097,21 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\DF - DimEmployee\OLE DB Source"
           TopLeft="156.1,5.49999999999995" />
         <NodeLayout
-          Size="153,42"
-          Id="Package\DF - DimEmployee\Derived Column"
-          TopLeft="154.5,107.1" />
+          Size="204,42"
+          Id="Package\DF - DimEmployee\Slowly Changing Dimension"
+          TopLeft="128.9,208.7" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DF - DimEmployee\Insert Destination"
+          TopLeft="149.7,716.699999999999" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DF - DimEmployee\Derived Column 1"
+          TopLeft="7.70000000000003,310.3" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\DF - DimEmployee\Union All"
+          TopLeft="170.9,513.5" />
         <EdgeLayout
           Id="Package\DF - DimEmployee.Paths[Union All Output 1]"
           TopLeft="230.9,555.1">
@@ -6577,6 +6332,14 @@ where [refTable].[ProductID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\DF - DimEmployee\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DF - DimEmployee\Slowly Changing Dimension">
     <Properties>
       <Property>
@@ -6618,13 +6381,13 @@ where [refTable].[ProductID] = ?</property>
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Derived Column.Outputs[Derived Column Output].Columns[ManagerID1]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerID]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;ManagerID&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Derived Column.Outputs[Derived Column Output].Columns[ManagerJobTitle1]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[ManagerJobTitle]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;ManagerJobTitle&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
@@ -6664,41 +6427,33 @@ where [refTable].[ProductID] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF - DimEmployee\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DF - DimProduct">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="150,42"
+          Size="149.6,41.6"
           Id="Package\DF - DimProduct\OLE DB Source"
-          TopLeft="157.5,5.5" />
+          TopLeft="156.1,5.49999999999995" />
         <NodeLayout
-          Size="208,42"
+          Size="208,41.6"
           Id="Package\DF - DimProduct\Slowly Changing Dimension"
-          TopLeft="128.5,107.5" />
+          TopLeft="126.9,107.1" />
         <EdgeLayout
           Id="Package\DF - DimProduct.Paths[OLE DB Source Output]"
-          TopLeft="232.5,47.5">
+          TopLeft="230.9,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6708,18 +6463,18 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="154,42"
+          Size="152.8,41.6"
           Id="Package\DF - DimProduct\Derived Column"
-          TopLeft="17.5,209.5" />
+          TopLeft="17.5,208.7" />
         <EdgeLayout
           Id="Package\DF - DimProduct.Paths[Historical Attribute Inserts Output]"
-          TopLeft="199.166666666667,149.5">
+          TopLeft="197.566666666667,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104.666666666667,60"
+              EndConnector="-103.666666666667,59.9999999999999"
               Start="0,0"
-              End="-104.666666666667,52.5">
+              End="-103.666666666667,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -6730,41 +6485,41 @@ where [refTable].[ProductID] = ?</property>
                     Point2="0,24.2748091603053"
                     Point3="-4,24.2748091603053" />
                   <mssgle:LineSegment
-                    End="-100.666666666667,24.2748091603053" />
+                    End="-99.6666666666667,24.2748091603053" />
                   <mssgle:CubicBezierSegment
-                    Point1="-100.666666666667,24.2748091603053"
-                    Point2="-104.666666666667,24.2748091603053"
-                    Point3="-104.666666666667,28.2748091603053" />
+                    Point1="-99.6666666666667,24.2748091603053"
+                    Point2="-103.666666666667,24.2748091603053"
+                    Point3="-103.666666666667,28.2748091603053" />
                   <mssgle:LineSegment
-                    End="-104.666666666667,52.5" />
+                    End="-103.666666666667,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-127.389720052083,29.2748091603053,150.1127734375,11.609375"
+              BoundingBox="-126.889720052083,29.2748091603053,150.1127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="166,42"
+          Size="164.8,41.6"
           Id="Package\DF - DimProduct\OLE DB Command"
-          TopLeft="5.50000000000003,311.5" />
+          TopLeft="5.50000000000003,310.3" />
         <EdgeLayout
           Id="Package\DF - DimProduct.Paths[Derived Column Output]"
-          TopLeft="91.5,251.5">
+          TopLeft="90.9,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6774,71 +6529,71 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="121,42"
+          Size="120,41.6"
           Id="Package\DF - DimProduct\Union All"
-          TopLeft="172,413.5" />
+          TopLeft="170.9,411.9" />
         <EdgeLayout
           Id="Package\DF - DimProduct.Paths[New Output]"
-          TopLeft="265.833333333333,149.5">
+          TopLeft="264.233333333333,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.5,264"
+              EndConnector="-14.6666666666666,263.2"
               Start="0,0"
-              End="-14.5,256.5">
+              End="-14.6666666666666,255.7">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,127.110663672268" />
+                    End="0,126.695815115553" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,127.110663672268"
-                    Point2="0,131.110663672268"
-                    Point3="-4,131.110663672268" />
+                    Point1="0,126.695815115553"
+                    Point2="0,130.695815115553"
+                    Point3="-4,130.695815115553" />
                   <mssgle:LineSegment
-                    End="-10.5,131.110663672268" />
+                    End="-10.6666666666666,130.695815115553" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.5,131.110663672268"
-                    Point2="-14.5,131.110663672268"
-                    Point3="-14.5,135.110663672268" />
+                    Point1="-10.6666666666666,130.695815115553"
+                    Point2="-14.6666666666666,130.695815115553"
+                    Point3="-14.6666666666666,134.695815115553" />
                   <mssgle:LineSegment
-                    End="-14.5,256.5" />
+                    End="-14.6666666666666,255.7" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.34138671875,136.110663672268,54.1827734375,11.43359375"
+              BoundingBox="-34.4247200520833,135.695815115553,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DF - DimProduct.Paths[OLE DB Command Output]"
-          TopLeft="88.5,353.5">
+          TopLeft="87.9,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
+              EndConnector="124.333333333333,59.9999999999999"
               Start="0,0"
-              End="125.166666666667,52.5">
+              End="124.333333333333,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,31.5263157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
                   <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
+                    End="120.333333333333,35.5263157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
                   <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
+                    End="124.333333333333,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6848,23 +6603,23 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="162.4,41.6"
           Id="Package\DF - DimProduct\Derived Column 1"
-          TopLeft="151,515.5" />
+          TopLeft="149.7,513.5" />
         <EdgeLayout
           Id="Package\DF - DimProduct.Paths[Union All Output 1]"
-          TopLeft="232.5,455.5">
+          TopLeft="230.9,453.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6874,23 +6629,23 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="162.4,41.6"
           Id="Package\DF - DimProduct\Insert Destination"
-          TopLeft="151,617.5" />
+          TopLeft="149.7,615.099999999999" />
         <EdgeLayout
           Id="Package\DF - DimProduct.Paths[Derived Column Output1]"
-          TopLeft="232.5,557.5">
+          TopLeft="230.9,555.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6927,7 +6682,7 @@ where [refTable].[ProductID] = ?</property>
   &lt;TableName&gt;[dbo].[DimProduct]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)category_name]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;CategoryName&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
@@ -6939,7 +6694,7 @@ where [refTable].[ProductID] = ?</property>
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[(nvarchar)product_name]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;ProductName&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
@@ -6973,117 +6728,27 @@ where [refTable].[ProductID] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="208,42"
-          Id="Package\DF - FactSale\Slowly Changing Dimension"
-          TopLeft="208,617.5" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\DF - FactSale\Lookup EmployeeID"
-          TopLeft="225.5,413.5" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\DF - FactSale\Lookup Product"
-          TopLeft="236,515.5" />
-        <NodeLayout
-          Size="150,42"
+          Size="149.6,41.6"
           Id="Package\DF - FactSale\OLE DB Source"
-          TopLeft="237,5.5" />
+          TopLeft="235.9,5.49999999999995" />
         <NodeLayout
-          Size="172,42"
-          Id="Package\DF - FactSale\Lookup CustomerID"
-          TopLeft="226,311.5" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\DF - FactSale\Lookup OrderDate"
-          TopLeft="229.5,209.5" />
-        <NodeLayout
-          Size="153,42"
+          Size="152.8,41.6"
           Id="Package\DF - FactSale\Derived Column"
-          TopLeft="235.5,107.5" />
-        <EdgeLayout
-          Id="Package\DF - FactSale.Paths[Lookup Match Output1]"
-          TopLeft="312,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF - FactSale.Paths[Lookup Match Output]"
-          TopLeft="312,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF - FactSale.Paths[Derived Column Output]"
-          TopLeft="312,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="234.3,107.1" />
         <EdgeLayout
           Id="Package\DF - FactSale.Paths[OLE DB Source Output]"
-          TopLeft="312,47.5">
+          TopLeft="310.7,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7092,20 +6757,50 @@ where [refTable].[ProductID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DF - FactSale\Lookup OrderDate"
+          TopLeft="228.3,208.7" />
         <EdgeLayout
-          Id="Package\DF - FactSale.Paths[Lookup Match Output3]"
-          TopLeft="312,557.5">
+          Id="Package\DF - FactSale.Paths[Derived Column Output]"
+          TopLeft="310.7,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\DF - FactSale\Lookup CustomerID"
+          TopLeft="224.7,310.3" />
+        <EdgeLayout
+          Id="Package\DF - FactSale.Paths[Lookup Match Output]"
+          TopLeft="310.7,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7116,9 +6811,69 @@ where [refTable].[ProductID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\DF - FactSale\Lookup EmployeeID"
+          TopLeft="224.3,411.9" />
+        <EdgeLayout
+          Id="Package\DF - FactSale.Paths[Lookup Match Output1]"
+          TopLeft="310.7,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DF - FactSale\Lookup Product"
+          TopLeft="234.7,513.5" />
         <EdgeLayout
           Id="Package\DF - FactSale.Paths[Lookup Match Output2]"
-          TopLeft="312,455.5">
+          TopLeft="310.7,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\DF - FactSale\Slowly Changing Dimension"
+          TopLeft="206.7,615.1" />
+        <EdgeLayout
+          Id="Package\DF - FactSale.Paths[Lookup Match Output3]"
+          TopLeft="310.7,555.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -7141,52 +6896,52 @@ where [refTable].[ProductID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
+          Size="162.4,41.6"
           Id="Package\DF - FactSale\Insert Destination"
-          TopLeft="5.50000000000011,719.5" />
+          TopLeft="5.5000000000001,716.7" />
         <EdgeLayout
           Id="Package\DF - FactSale.Paths[New Output]"
-          TopLeft="278.666666666667,659.5">
+          TopLeft="277.366666666667,656.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-191.666666666667,60"
+              EndConnector="-190.666666666667,60"
               Start="0,0"
-              End="-191.666666666667,52.5">
+              End="-190.666666666667,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2748091603053" />
+                    End="0,20.2748091603054" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2748091603053"
-                    Point2="0,24.2748091603053"
-                    Point3="-4,24.2748091603053" />
+                    Point1="0,20.2748091603054"
+                    Point2="0,24.2748091603054"
+                    Point3="-4,24.2748091603054" />
                   <mssgle:LineSegment
-                    End="-187.666666666667,24.2748091603053" />
+                    End="-186.666666666667,24.2748091603054" />
                   <mssgle:CubicBezierSegment
-                    Point1="-187.666666666667,24.2748091603053"
-                    Point2="-191.666666666667,24.2748091603053"
-                    Point3="-191.666666666667,28.2748091603053" />
+                    Point1="-186.666666666667,24.2748091603054"
+                    Point2="-190.666666666667,24.2748091603054"
+                    Point3="-190.666666666667,28.2748091603054" />
                   <mssgle:LineSegment
-                    End="-191.666666666667,52.5" />
+                    End="-190.666666666667,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-122.924720052083,29.2748091603053,54.1827734375,11.43359375"
+              BoundingBox="-122.424720052083,29.2748091603054,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="166,42"
+          Size="164.8,41.6"
           Id="Package\DF - FactSale\OLE DB Command"
-          TopLeft="229,719.5" />
+          TopLeft="228.3,716.7" />
         <EdgeLayout
           Id="Package\DF - FactSale.Paths[Changing Attribute Updates Output]"
-          TopLeft="345.333333333333,659.5">
+          TopLeft="344.033333333333,656.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -7224,6 +6979,52 @@ where [refTable].[ProductID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\DF - FactSale\Lookup EmployeeID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimEmployee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - FactSale\Lookup Product">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProduct]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DF - FactSale\Slowly Changing Dimension">
     <Properties>
       <Property>
@@ -7244,7 +7045,7 @@ where [refTable].[ProductID] = ?</property>
       &lt;IdentificationString&gt;Lookup EmployeeID.Outputs[Lookup Match Output].Columns[EmployeeKey]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;EmployeeKey&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Derived Column.Outputs[Derived Column Output].Columns[int(OrderDate)]&lt;/IdentificationString&gt;
@@ -7271,7 +7072,7 @@ where [refTable].[ProductID] = ?</property>
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[productquantity]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[(int)quantity]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Quantity&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
@@ -7315,52 +7116,6 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF - FactSale\Lookup EmployeeID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimEmployee]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF - FactSale\Lookup Product">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimProduct]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DF - FactSale\OLE DB Source">
     <Properties>
       <Property>
@@ -7379,7 +7134,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7402,7 +7157,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
