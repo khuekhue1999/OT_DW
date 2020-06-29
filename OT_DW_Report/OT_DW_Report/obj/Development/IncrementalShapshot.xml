@@ -54,14 +54,14 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>y3xbFCADFC8cbL04ZyGmaKlPvJI=6/27/2020 2:03:02 PM6/27/2020 2:03:01 PM</TimeStamp>
+        <TimeStamp>4QZQz0WrhAu091NZKGh9PfLlVo4=6/28/2020 8:51:57 PM6/27/2020 2:03:01 PM</TimeStamp>
         <ID>
           <String>Dim Customer</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>sJx+GflOLfobaU2FaSwYK/C+pXI=6/27/2020 2:13:27 PM6/27/2020 2:03:01 PMWX6dM7K0yVgMcrCTLY1VPXdBiLk=6/27/2020 2:03:01 PM6/27/2020 2:03:01 PM</TimeStamp>
+        <TimeStamp>EMoXBU46+4AhKDXLRmT38IySm1A=6/28/2020 8:51:57 PM6/27/2020 2:03:01 PMWX6dM7K0yVgMcrCTLY1VPXdBiLk=6/27/2020 2:03:01 PM6/27/2020 2:03:01 PM</TimeStamp>
         <ID>
           <String>OT DW</String>
         </ID>
@@ -78,5 +78,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2020-06-27T07:13:35.463333Z</LastDeployed>
+  <LastDeployed>2020-06-28T13:53:30.15Z</LastDeployed>
 </DeploymentSnapshot>
